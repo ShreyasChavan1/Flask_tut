@@ -1,0 +1,106 @@
+<!-- this line basically indicates that it is using the boiler plate header and footer used in layout.html -->
+{% extends "layout.html" %}
+<!-- here the body of page will start -->
+{% block body %}
+        <!-- Page Header-->
+        <header class="masthead" style="background: url({{ url_for('static', filename='assets/img/home-bg.jpg') }})">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Edit/Add posts</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                
+                <hr>
+                <h1 class="row gx-4 gx-lg-5 justify-content-center">Edit posts</h1>
+
+
+                <!-- <a href="/"><button class="btn btn-primary ">Homepage</button></a>
+                <a href="/logout"><button class="btn btn-primary">Logout</button></a> -->
+
+                <div class="row justify-content-between">
+    
+                    <!-- First button (Homepage) -->
+                    <div class="col-auto">
+                        <a href="/" class="btn btn-primary">Homepage</a>
+                    </div>
+                    
+                    <!-- Second button (Logout) -->
+                    <div class="col-auto">
+                        <a href="/logout" class="btn btn-primary">Logout</a>
+                    </div>
+                    
+                </div>
+
+<br>
+<br>
+                <hr>
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="post" action="/edit/{{srno}}">
+                    <div class="form-floating">
+                        <input class="form-control" id="title" name="title" type="text" placeholder="Enter title of blog" value="{{post.title}}">
+                        <label for="name" >Title</label>
+                        
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" id="slug" name="slug"  placeholder="add slug" value="{{post.slug}}" >
+                        <label for="email">slug</label>
+
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" id="tline" name="tline"  placeholder="Enter tagline of post" value="{{post.tagline}}">
+                        <label for="phone">Tag line</label>
+
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control" id="content" name="content" placeholder="Enter content here" style="height: 12rem">{{post.content}}</textarea>
+                        <label for="message">Content</label>
+                        
+                    </div>
+
+                    <div class="form-floating">
+                        <input class="form-control" id="img" name="img"  placeholder="enter image file name" value="{{post.img_src}}">
+                        <label for="phone">img-file</label>
+                        
+                    </div>
+                    <br />
+                    <!-- Submit success message-->
+                    <!---->
+                    <!-- This is what your users will see when the form-->
+                    <!-- has successfully submitted-->
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center mb-3">
+                            <div class="fw-bolder">Form submission successful!</div>
+                            To activate this form, sign up at
+                            <br />
+                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                        </div>
+                    </div>
+                    <!-- Submit error message-->
+                    <!---->
+                    <!-- This is what your users will see when there is-->
+                    <!-- an error submitting the form-->
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                    <!-- Submit Button-->
+                    <button class="btn btn-primary text-uppercase" id="submitButton" type="submit" >Send</button>
+                </form>
+                
+                    
+
+
+                    <hr class="my-4" />
+                    <!-- Pager-->
+                    <!-- <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div> -->
+                </div>
+            </div>
+        </div>
+        <!-- from here footer in layout.html will run -->
+        {% endblock %}
+        

@@ -1,0 +1,20 @@
+{
+    "params":
+    {
+        "local":"True",
+        "local_server":"mysql+mysqlconnector://root:@localhost:3306/codewithme",
+        "prod_server":"mysql+mysqlconnector://root:@localhost:3306/codewithme",
+        "fb_link":"https://facebook.com/codewithme",
+        "tw_link":"https://twitter.com/codewithme",
+        "gh_link":"https://github.com/codewithme",
+        "web_title":"coding stuff",
+        "blog_title":"coding blogs",
+        "gmail-user":"chavanshreyas120@gmail.com",
+        "gmail-password":"iwillbemillionaire",
+        "about-text":"hello this is me shreyas i created this website using flask micro framework",
+        "no_posts": 3,
+        "Admin":"shreyas",
+        "password":"shre9833",
+        "upload_location":"F://PY-TUT//python_flask//static//assets//img"   
+    }
+}

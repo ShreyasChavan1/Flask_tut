@@ -1,0 +1,90 @@
+<!-- this line basically indicates that it is using the boiler plate header and footer used in layout.html -->
+{% extends "layout.html" %}
+<!-- here the body of page will start -->
+{% block body %}
+        <!-- Page Header-->
+        <header class="masthead" style="background: url({{ url_for('static', filename='assets/img/home-bg.jpg') }})">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>{{params['blog_title']}}</h1>
+                            <span class="subheading">A Blog For Programerz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    {% for post in posts %}
+                    <li type="none"><a href="/post/{{post.slug}}">
+                    <div class="post-preview">
+                        <h2 class="post-title">{{post.title}}</h2>
+                        <h3 class="post-subtitle">{{post.tagline}}</h3>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#!">Admin</a>
+                            {{post.date}}
+                        </p>
+                        {{post.content[0:143]}}.......
+                        <hr>
+                    </div></li>
+                    {% endfor %}
+                    <!-- Divider-->
+
+
+
+                    
+                    <hr class="my-4" />
+                    <!-- Pager-->
+                    <!-- <div class="d-flex justify-content-between mb-4">
+                        <a class="btn btn-primary text-uppercase ml-4" href="#!">← Previous</a>
+                        <a class="btn btn-primary text-uppercase mr-4" href="#!">Next →</a>
+                    </div> -->
+<!-- updated -->
+
+<div class="pagination justify-content-center">
+    <ul class="pagination">
+        {% if posts.has_prev %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1" aria-label="First">
+                    <span aria-hidden="true">&laquo;&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ posts.prev_num }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+        
+        <li class="page-item disabled">
+            <span class="page-link">Page {{ posts.page }} of {{ posts.pages }}</span>
+        </li>
+        
+        {% if posts.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ posts.next_num }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ posts.pages }}" aria-label="Last">
+                    <span aria-hidden="true">&raquo;&raquo;</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+
+            </div>
+        </div>
+        <!-- from here footer in layout.html will run -->
+        {% endblock %}
+        
